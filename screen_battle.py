@@ -22,9 +22,15 @@ class Screen_Battle (tkinter.Frame):
         '''
         This method creates all of the (initial) widgets for the battle page.
         '''
-        #
-        # TO DO
-        #
+        def __init__(self, master):
+        # initialize the frame
+            super(Screen_Battle, self).__init__(master)
+            self.grid()
+            self.create_widgets()
+
+        def create_widgets(self):
+            
+            
         
     def attack_clicked(self):
         ''' This method is called when the user presses the "Attack" button.
