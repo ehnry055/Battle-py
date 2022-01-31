@@ -1,9 +1,10 @@
-import tkinter
+from tkinter import *
 
-class Screen_CharacterSelection (tkinter.Frame):
+
+class Screen_CharacterSelection(Frame):
     def __init__ (self, master, roster, callback_on_selected):
         super().__init__(master)
-       # Save the CharacterRoster  
+       # Save the CharacterRoster
         self.roster = roster
         # Save the method reference to which we return control after the player hits "Character Selected"
         self.callback_on_selected = callback_on_selected
@@ -33,21 +34,27 @@ class Screen_CharacterSelection (tkinter.Frame):
         Here is some sample code for including an image on a page:   (char is a Character object)
             
             imageSmall = tkinter.PhotoImage(file="images/" + char.small_image);
-            w= tkinter.Label (self,
-                        image = imageSmall, 
-                         )
+            w = tkinter.Label (self, image = imageSmall, )
             w.photo = imageSmall # saving the image as a property is required for "saving" the image. It's odd.
 
             w.grid (ADD PARAMETERS HERE)
         '''
-        self.character_index = tkinter.StringVar()
+        self.character_index = StringVar()
         self.character_index.set(None)
-        
-        #
-        # TO DO
-        #
-       
- 
+
+        Label(self, text = "Hit Points\tDexterity\tStrength").grid(row = 0, column = 2, sticky = E)
+
+        for i in range(self.roster.get_number_of_characters()):
+            Radiobutton(self, text = self.roster.character_list[i].name, variable = self.character_index, value = i).grid(row = 2 + i, column = 0, sticky = W)
+            imageSmall = PhotoImage(file="images/" + self.roster.character_list[i].small_image)
+            w = Label(self, image = imageSmall, )
+            w.photo = imageSmall
+            w.grid(row = 2 + i, column = 1, sticky = W)
+
+            Label(self, text = f"{self.roster.character_list[i].hit_points}\t{self.roster.character_list[i].dexterity}\t{self.roster.character_list[i].strength}").grid(row = 2+i, column = 2, sticky = E)
+
+        Button(self, text = "Character Selected!", fg = "Red", command = self.selected_clicked).grid(row = 8, column = 3, sticky = E)
+
     def selected_clicked(self):
         ''' This method is to be called when the "Character Selected!" button is clicked. 
             Notice that it passes self.character_index back to the callback method. '''         

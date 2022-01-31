@@ -1,6 +1,6 @@
-import tkinter
+from tkinter import *
 
-class Screen_Battle (tkinter.Frame):
+class Screen_Battle(Frame):
     def __init__ (self, master, player1, player2, callback_on_exit):
         super().__init__(master)
 
@@ -22,7 +22,6 @@ class Screen_Battle (tkinter.Frame):
         '''
         This method creates all of the (initial) widgets for the battle page.
         '''
-        
             
             
         
@@ -39,16 +38,9 @@ class Screen_Battle (tkinter.Frame):
     
                 self.button.destroy()   
         '''        
-        #
-        # TO DO
-        #
+        pass
                                             
     def exit_clicked(self):
         ''' This method is called when the Exit button is clicked. 
             It passes control back to the callback method. '''        
         self.callback_on_exit()
-  
-            
-            
-            
-            
