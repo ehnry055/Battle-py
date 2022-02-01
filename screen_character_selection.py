@@ -1,3 +1,4 @@
+#help from albert on i loop and fixing our roster
 from tkinter import *
 
 
