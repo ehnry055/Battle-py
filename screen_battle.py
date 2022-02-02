@@ -49,8 +49,6 @@ class Screen_Battle(Frame):
         self.hp2 = Label(self, text = f"{self.player2.hit_points}/{self.totalhp2} HP")
         self.hp2.grid(row = 5, column = 2, sticky = N)
 
-
-
         self.desc1 = Label(self, text= "")
         self.desc1.grid(row= 0, column = 2, sticky = N)
         
