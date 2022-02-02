@@ -81,9 +81,9 @@ class Screen_Battle(Frame):
 
         if self.player1.hit_points <= 0 or self.player2.hit_points <= 0:
             if self.player1.hit_points <= 0:
-                self.winner["text"] = f"{self.player1.name} is victorious!"
-            if self.player2.hit_points <= 0:
                 self.winner["text"] = f"{self.player2.name} is victorious!"
+            if self.player2.hit_points <= 0:
+                self.winner["text"] = f"{self.player1.name} is victorious!"
         
             self.button.destroy()
             Button(self, text = "Exit!", fg = "Red", command = self.exit_clicked).grid(row = 0, column = 1, sticky = N)
