@@ -22,6 +22,21 @@ class Screen_Battle(Frame):
         '''
         This method creates all of the (initial) widgets for the battle page.
         '''
+        Label(self, text = "You").grid(row = 4, column = 0, sticky = N)
+        Label(self, text = "Computer").grid(row = 4, column = 14, sticky = N)
+
+        you = PhotoImage(file="images/"+ str(self.player1.large_image))
+        image1 = Label(self, image = you, )
+        image1.photo = you
+        image1.grid(row = 5, column = 0, sticky = W)
+
+        cpu = PhotoImage(file="images/"+ str(self.player2.large_image))
+        image2 = Label(self, image = cpu, )
+        image2.photo = cpu
+        image2.grid(row = 5, column = 14, sticky = E)
+
+        Label(self, text = f"{self.player1.hit_points} HP").grid(row = 6, column = 0, sticky = N)
+        Label(self, text = f"{self.player2.hit_points} HP").grid(row = 6, column = 14, sticky = N)
             
             
         

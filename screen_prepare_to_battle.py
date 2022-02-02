@@ -19,26 +19,26 @@ class Screen_PrepareToBattle(Frame):
         '''
         This method creates all of the widgets the prepare to battle page.
         '''
-        Label(self, text = "You").grid(row = 0, column = 0, sticky = N)
-        Label(self, text = "Computer").grid(row = 0, column = 14, sticky = N)
 
-        you = PhotoImage(file="images/"+ str(self.player1.large_image))
-        image1 = Label(self, image = you, )
-        image1.photo = you
-        image1.grid(row = 1, column = 0, sticky = W)
+        Label(self, text = "You").grid(row = 0, column = 1, sticky = N)
+        Label(self, text = "Computer").grid(row = 0, column = 2, sticky = N)
 
-        cpu = PhotoImage(file="images/"+ str(self.player2.large_image))
-        image2 = Label(self, image = cpu, )
-        image2.photo = cpu
-        image2.grid(row = 1, column = 14, sticky = E)
+        for i in range(1, 3):
+            if i == 1:
+                p = self.player1
+            else:
+                p = self.player2
 
-        Label(self, text = f"{self.player1.hit_points} HP\n{self.player1.dexterity} Dexterity\n{self.player1.strength} Strength").grid(row = 2, column = 0, sticky = N)
-        Label(self, text = f"{self.player2.hit_points} HP\n{self.player2.dexterity} Dexterity\n{self.player2.strength} Strength").grid(row = 2, column = 14, sticky = N)
+            character = PhotoImage(file="images/" + str(p.large_image))
+            image = Label(self, image = character, )
+            image.photo = character
+            image.grid(row = 1, column = i, sticky = W)
 
-        Button(self, text = "Commence Battle!", fg = "Red", command = self.commence_battle_clicked).grid(row = 5, column = 14, sticky = E)
+            Label(self, text = f"{p.hit_points} HP\n{p.dexterity} Dexterity\n{p.strength} Strength").grid(row = 2, column = i, sticky = N)
+
+        Button(self, text = "Commence Battle!", fg = "Red", command = self.commence_battle_clicked).grid(row = 5, column = 2, sticky = E)
 
 
- 
     def commence_battle_clicked(self):
         ''' This method is called when the Battle button is clicked. 
             It passes control back to the callback method. '''         
